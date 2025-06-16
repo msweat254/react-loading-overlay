@@ -18,7 +18,7 @@
   "scripts": {
     "build": "npm run build-cjs && npm run build-es6 && rimraf umd && npm run build-umd && npm run build-min",
     "build-cjs": "rimraf lib && babel ./src -d lib",
-    "build-es6": "rimraf es6 && babel ./src -d es6 --blacklist=es6.modules",
+    "build-es6": "rimraf es6 && babel ./src -d es6 --no-babelrc --presets=@babel/preset-env,@babel/preset-react",
     "build-umd": "NODE_ENV=development webpack src/LoadingOverlay.js -o umd/LoadingOverlay.js",
     "build-min": "NODE_ENV=production webpack src/LoadingOverlay.js -o umd/LoadingOverlay.min.js",
     "storybook": "start-storybook -p 9001",
@@ -42,7 +42,7 @@
   "dependencies": {
     "emotion": "^10.0.1",
     "prop-types": "^15.6.2",
-    "react-transition-group": "^2.5.0"
+    "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.0",
@@ -59,8 +59,8 @@
     "babel-loader": "^8.0.4",
     "jest": "^23.6.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "react-addons-test-utils": "^15.6.2",
+    "react-dom": "^18.2.0",
     "react-testing-library": "^5.3.1",
     "regenerator-runtime": "^0.13.1",
     "rimraf": "^2.6.2",
@@ -75,5 +75,6 @@
   },
   "standard": {
     "parser": "babel-eslint"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
